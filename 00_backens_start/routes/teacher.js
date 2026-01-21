@@ -35,6 +35,14 @@ Router.get("/",(req,res) => {
     res.json(Teacherdata)
 })
 
+// dynamic routes of techer
+
+Router.get("/:id",(req,res) => {
+    const teacherId = req.params.id
+    let result = Teacherdata.find((x) => x.id == teacherId)
+    res.json(result)
+})
+
 // Post Teachers
 
 
@@ -57,6 +65,22 @@ Router.post("/",(req,res) => {
         })
     }
     res.json(body)
+})
+
+// Delete Teacher
+
+Router.delete("/:id",(req,res) => {
+    const teacherId = req.params.id
+    const index = Teacherdata.findIndex((x) => x.id == teacherId)
+    console.log('Index No',index);
+    
+    const deletedTeacher = Teacherdata.splice(index,1)
+    console.log('deletedTeacher',deletedTeacher);
+    
+    res.json({
+        success:true,
+        message:'Teacher deletEd Successfully1'
+    })
 })
 
 module.exports = Router
