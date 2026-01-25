@@ -46,26 +46,26 @@ Router.get("/:id",(req,res) => {
 // Post Teachers
 
 
-Router.post("/",(req,res) => {
-    const body = req.body
+// Router.post("/",(req,res) => {
+//     const body = req.body
 
-    let keyArr = ["name","id"]
-    let errArr = []
+//     let keyArr = ["name","id"]
+//     let errArr = []
 
-    keyArr.forEach((key) => {
-        if(!body[key]){
-            errArr.push(`${key} is missing!!!`)
-        }
-    })
-    if(errArr.length > 0){
-        res.json({
-            message:errArr,
-            success:false,
-            data:null
-        })
-    }
-    res.json(body)
-})
+//     keyArr.forEach((key) => {
+//         if(!body[key]){
+//             errArr.push(`${key} is missing!!!`)
+//         }
+//     })
+//     if(errArr.length > 0){
+//         res.json({
+//             message:errArr,
+//             success:false,
+//             data:null
+//         })
+//     }
+//     res.json(body)
+// })
 
 // Delete Teacher
 
@@ -81,6 +81,16 @@ Router.delete("/:id",(req,res) => {
         success:true,
         message:'Teacher deletEd Successfully1'
     })
+})
+
+// edit method
+
+Router.p
+
+
+Router.post('/',(req,res) => {
+    const body = req.body
+    res.json(body)
 })
 
 module.exports = Router
