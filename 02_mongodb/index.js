@@ -1,9 +1,13 @@
 const express = require("express")
 const app = express()
+const cors = require("cors");
+
+
 // const supabase = require("@supabase/supabase-js")
 const OwnerRoute = require("./routes/ownerRoutes")
 // const RenterRoute = require("./routes/renterRoutes")
 app.use(express.json())
+app.use(cors()); // allow all origins (DEV MODE)
 
 app.use('/owners',OwnerRoute)
 // app.use('/renters',RenterRoute)
@@ -18,7 +22,7 @@ const mongoose = require("mongoose");
 
 mongoose.connect(
    process.env.MONGODB_CONNECTION_URL
-)
+)                                                                                    
 .then(() => console.log("MongoDB Atlas connected"))
 .catch(err => console.error(err));
 

@@ -52,15 +52,15 @@ router.post("/",async (req,res) => {
 // }) 
 
 /* READ */
-// router.get("/", async (req, res) => {
-//   const { data, error } = await supabase
-//     .from("Owners")
-//     .select("*");
+router.get("/", async (req, res) => {
+  try{
 
-//   if (error) return res.status(400).json(error);
-
-//   res.json(data);
-// });
+    const data = await ownerModel.find()
+    res.status(200).json(data);
+  }catch(err){
+    alert(err)
+  }
+});
 
 // router.get("/:id",async(req,res) => {
 //   const id = req.params.id
