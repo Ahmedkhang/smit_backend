@@ -85,8 +85,6 @@ Router.delete("/:id",(req,res) => {
 
 // edit method
 
-Router.p
-
 
 Router.post('/',(req,res) => {
     const body = req.body
