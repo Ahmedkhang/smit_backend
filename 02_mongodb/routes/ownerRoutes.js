@@ -29,6 +29,25 @@ router.post("/",async (req,res) => {
   
 })
 
+router.put("/:id", async (req,res) => {
+  try{
+    const id = req.params.id
+    const body = req.body
+    let existingId = await ownerModel.findById(id)
+    if(existingId){
+      let result = await ownerModel.findByIdAndUpdate(id,body,{
+        new:true
+      })
+
+      return res.json(ResponseSuccess("Successfully Updated",result))
+    }else{
+      res.json(ResponseError("Not Found","404 Not Found"))
+    }
+  }catch(err){
+     return res.json(ResponseError("Internal Server Error",err))
+  }
+})
+
 // router.put("/:id",async(req,res) => {
 //   const teacherId = req.params.id
 //   const { name,email,CNIC_num,total_cars} = req.body
