@@ -6,6 +6,19 @@ const { ResponseSuccess, ResponseError } = require("../helper_functions/helper_f
 
 const router = express.Router();
 
+// Query Parameter route
+
+router.get("/search",(req,res) => {
+  const { name } = req.query
+  return res.json({
+    isSucces:true,
+    name
+  }) 
+})
+
+// MongoDb Post Method
+
+
 router.post("/",async (req,res) => {
   try{
     const body = req.body
@@ -29,6 +42,8 @@ router.post("/",async (req,res) => {
   
 })
 
+// MongoDb Put Method
+
 router.put("/:id", async (req,res) => {
   try{
     const id = req.params.id
@@ -45,6 +60,24 @@ router.put("/:id", async (req,res) => {
     }
   }catch(err){
      return res.json(ResponseError("Internal Server Error",err))
+  }
+})
+
+// MongoDB Delete Method
+
+router.delete("/:id",async(req,res) => {
+  try{
+    const id = req.params.id
+    let existingId = await ownerModel.findById(id)
+    if(existingId){
+      let result = await ownerModel.findByIdAndDelete(id)
+
+      return res.json(ResponseSuccess("Success, Data Deleted!",result))
+    }else{
+      return res.json(ResponseError("Internal Server Error","404 Data Not Found"))
+    } 
+  }catch(err){
+    return res.json(ResponseError("Internal Server Error",err))
   }
 })
 
