@@ -1,3 +1,4 @@
+const bcrypt =require("bcryptjs")
 const express = require("express");
 // const supabase = require("../config/supabase");
 const ownerModel = require("../models/studentModel");
@@ -22,6 +23,12 @@ router.get("/search",(req,res) => {
 router.post("/",async (req,res) => {
   try{
     const body = req.body
+    
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(body.password,salt)
+    console.log(hashedPassword);
+    
+    body.password = hashedPassword
     const obj = new ownerModel(body)
     await obj.save()
     return res.status(200).json(ResponseSuccess("Data Posted Successfully",body))

@@ -4,6 +4,10 @@ const OwnerSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    password:{
+        type:String,
+        required:true
+    },
     ownerCnic:{
         type:Number,
         required:true

@@ -1,20 +1,18 @@
 {
-  "name": "02_mongodb",
+  "name": "03_postgres_sql",
   "version": "1.0.0",
-  "description": "",
+  "description": "postgres practice",
   "license": "ISC",
-  "author": "",
+  "author": "ahmed",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@prisma/client": "^5.22.0",
     "bcryptjs": "^3.0.3",
-    "cors": "^2.8.6",
-    "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "mongodb": "^7.0.0",
-    "mongoose": "^9.1.5"
+    "prisma": "^5.22.0"
   }
 }
