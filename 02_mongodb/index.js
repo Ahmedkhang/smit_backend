@@ -5,11 +5,13 @@ const cors = require("cors");
 
 // const supabase = require("@supabase/supabase-js")
 const OwnerRoute = require("./routes/ownerRoutes")
+const DriverRoute = require("./routes/driverRoutes")
 // const RenterRoute = require("./routes/renterRoutes")
 app.use(express.json())
 app.use(cors()); // allow all origins (DEV MODE)
 
 app.use('/owners',OwnerRoute)
+app.use("/drivers",DriverRoute)
 // app.use('/renters',RenterRoute)
 
 require("dotenv").config()

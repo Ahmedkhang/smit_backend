@@ -26,7 +26,7 @@ router.post("/",async (req,res) => {
     
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(body.password,salt)
-    console.log(hashedPassword);
+    // console.log(hashedPassword);
     
     body.password = hashedPassword
     const obj = new ownerModel(body)
